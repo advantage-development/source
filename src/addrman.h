@@ -34,7 +34,7 @@ private:
     int nAttempts;
 
     // reference count in new sets (memory only)
-    int nRefCount;
+    uint nRefCount;
 
     // in tried set? (memory only)
     bool fInTried;
@@ -44,7 +44,7 @@ private:
 
     friend class CAddrMan;
 
-public:
+private:
 
     IMPLEMENT_SERIALIZE(
         CAddress* pthis = (CAddress*)(this);
@@ -56,7 +56,7 @@ public:
 
     void Init()
     {
-        nLastSuccess = 0;
+        nLastSuccess = 1;
         nLastTry = 0;
         nAttempts = 0;
         nRefCount = 0;
