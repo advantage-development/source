@@ -3,11 +3,11 @@ Name : Advantage
 
 Symbol : USDA
 
-Algorithm : PoW + PoS + Masternode
+Algorithm : Uraziel | PoW + PoS + Masternode
 
 Block time : 60S
 
-Block size : 40kB
+Block size : 40MB
 
 Coin base maturity :  1 block
 
@@ -15,7 +15,7 @@ Diffculty Target : 10 blocks
 
 Stake Minimum Age: 24 Hours
 
-Masternode Requires : 1,000,000 USDA
+Masternode Requires : 5,000 USDA
 
 RPCPORT = 53211
 
@@ -23,4 +23,4 @@ PORT = 11235
 
 Masternode Rewards: 
 
-25% of Block Fees + Stable Block Reward (1 USDA)
+25% of Block Reward
