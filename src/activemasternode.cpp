@@ -24,7 +24,7 @@ void CActiveMasternode::ManageStatus()
     bool fIsInitialDownload = IsInitialBlockDownload();
     if(fIsInitialDownload) {
         status = MASTERNODE_SYNC_IN_PROCESS;
-        LogPrintf("CActiveMasternode::ManageStatus() - Sync in progress. Must wait until sync is complete to start masternode.\n");
+        LogPrintf("CActiveMasternode::ManageStatus() - Sync in progress. Must wait until sync is complete to start masternode. When ready type the command "masternode start alias1" alias1 being your masternodes personal name you gave it.\n");
         return;
     }
 
@@ -80,7 +80,7 @@ void CActiveMasternode::ManageStatus()
                 return;
             }
 
-            LogPrintf("CActiveMasternode::ManageStatus() - Is capable master node!\n");
+            LogPrintf("CActiveMasternode::ManageStatus() - Masternode is ready and capable!\n");
 
             status = MASTERNODE_IS_CAPABLE;
             notCapableReason = "";
@@ -108,7 +108,7 @@ void CActiveMasternode::ManageStatus()
             return;
         } else {
             notCapableReason = "Could not find suitable coins!";
-        	LogPrintf("CActiveMasternode::ManageStatus() - Could not find suitable coins!\n");
+        	LogPrintf("CActiveMasternode::ManageStatus() - Could not find suitable coins for Masternode collateral!\n");
         }
     }
 
@@ -213,7 +213,7 @@ bool CActiveMasternode::Dseep(CTxIn vin, CService service, CKey keyMasternode, C
             pmn->UpdateLastSeen();
     } else {
     	// Seems like we are trying to send a ping while the masternode is not registered in the network
-    	retErrorMessage = "Darksend Masternode List doesn't include our masternode, Shutting down masternode pinging service! " + vin.ToString();
+    	retErrorMessage = "Hey Darksend is meant to be disabled, Shutting down masternode pinging service! " + vin.ToString();
     	LogPrintf("CActiveMasternode::Dseep() - Error: %s\n", retErrorMessage.c_str());
         status = MASTERNODE_NOT_CAPABLE;
         notCapableReason = retErrorMessage;
